@@ -12,6 +12,9 @@ header {
   border-bottom: 0.5px solid #cfb3ff;
   z-index: 2;
 }
+.header--fixed {
+  position: fixed;
+}
 
 .nav {
   height: 100%;
@@ -22,10 +25,10 @@ header {
   align-items: center;
 
   &__logo {
-    font-size: 34px;
+    font-size: 30px;
     letter-spacing: 3px;
     line-height: 28px;
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -34,12 +37,12 @@ header {
     display: flex;
 
     li {
-      margin: 0 15px;
+      margin: 0 10px;
     }
   }
 
   &__link {
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 2px;
     line-height: 28px;
     color: #fff;
@@ -53,17 +56,20 @@ header {
     }
   }
   &__login {
-    margin-left: 65px;
+    margin-left: 50px;
   }
   &__signup {
     color: #8d49ff;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 28px;
     letter-spacing: 1px;
     padding: 15px 20px;
     border-radius: 25px;
     background-color: #ffffff;
     font-weight: 700;
+  }
+  &__btn {
+    display: none;
   }
 }
 
@@ -139,6 +145,7 @@ header {
   }
   &__articles {
     display: flex;
+    width: fit-content;
     margin-top: 105px;
     border-top: 1px solid #fff;
 
@@ -147,6 +154,10 @@ header {
       padding-right: 70px;
       border-radius: 3px;
       transition: all 0.2s ease-in;
+
+      & * {
+        pointer-events: none;
+      }
 
       &--active {
         background-color: #fff;
@@ -213,6 +224,7 @@ header {
         visibility: hidden;
         display: flex;
         align-items: center;
+        pointer-events: all;
 
         svg {
           transform: rotateZ(180deg);
@@ -239,7 +251,7 @@ header {
     margin-bottom: 30px;
   }
   &__title {
-    width: 767px;
+    max-width: 767px;
     font-size: 46px;
     color: #262626;
     text-align: center;
@@ -292,6 +304,11 @@ header {
     text-align: center;
     font-weight: 400;
     margin-bottom: 60px;
+    text-transform: capitalize;
+
+    span {
+      text-transform: uppercase;
+    }
   }
   &__slides {
     display: flex;
@@ -302,7 +319,8 @@ header {
     border-radius: 3px;
     background-color: #663cfc;
     transition: all 0.2s ease-in;
-    margin-right: 5px;
+    margin-right: 10px;
+    cursor: pointer;
 
     &--active {
       background-color: #fff;
@@ -331,7 +349,7 @@ header {
     margin-bottom: 10px;
   }
   &__title {
-    font-size: 46px;
+    font-size: 42px;
     line-height: 34px;
     color: #191919;
     font-weight: 400;
@@ -350,6 +368,10 @@ header {
     margin: 0 20px;
     cursor: pointer;
 
+    &:hover {
+      color: #663cfc;
+    }
+
     &--active {
       display: flex;
       align-items: center;
@@ -359,19 +381,25 @@ header {
       border-radius: 24px;
       filter: drop-shadow(0px 6px 12px rgba(116, 65, 253, 0.5));
       background-color: #663cfc;
-    }
-    &:hover {
-      color: #663cfc;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
   &__articles {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 100px;
 
     .article {
-      margin-bottom: 60px;
+      margin: 0 10px 60px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.01);
+      }
 
       &__img {
         width: 370px;
@@ -411,6 +439,7 @@ header {
     color: #fff;
     font-weight: 400;
     margin-bottom: 50px;
+    text-align: center;
     text-transform: capitalize;
   }
   &__list {
@@ -468,10 +497,13 @@ header {
 
     .article {
       width: 370px;
+      margin: 0 10px;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
 
       &:hover {
+        transform: scale(1.01);
         a {
           color: #8d49ff;
 
@@ -600,7 +632,7 @@ header {
   &__tweets {
     @extend .footer__posts;
     li {
-      padding: 20px 0 40px;
+      padding: 20px 0;
     }
   }
   &__nav {
@@ -638,3 +670,5 @@ header {
     z-index: -1;
   }
 }
+
+@import "./responsive";
